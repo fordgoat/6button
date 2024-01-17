@@ -4,12 +4,11 @@
 
 from bot import Bot
 from config import *
-from Data import Data
 from pyrogram import filters
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, Message
 from .button import start_button
-
+from .data import *
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
@@ -31,9 +30,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             )
     elif data == "about":
         await query.message.edit_text(
-            text=f"{zinfo}",
+            text=INFO,
             disable_web_page_preview=True,
-            parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("Kembali", callback_data="home")]]
             ),
@@ -42,7 +40,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         await query.message.edit_text(
             text=CMD_TEXT,
             disable_web_page_preview=True,
-            parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("Kembali", callback_data="home")]]
             ),
@@ -56,7 +53,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         await query.message.edit_text(
             text=TUTOR_TEXT,
             disable_web_page_preview=True,
-            parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("Kembali", callback_data="home")]]
             ),
