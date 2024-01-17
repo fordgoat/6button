@@ -15,13 +15,14 @@ from config import (
     PROTECT_CONTENT,
     START_MSG,
 )
-from database.sql import add_user, delete_user, full_userbase, query_msg
+# from database.sql import add_user, delete_user, full_userbase, query_msg
+from database.mongo import *
 from pyrogram import filters
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
 from pyrogram.types import InlineKeyboardMarkup, Message
 
-from helper_func import decode, get_messages, subsall, subsch, subsgc
+from helper_func import decode, get_messages, subsall, subs1, subs2, subs3, subs4, subs5, subs6, subs7, subs8, subs9, subs10
 
 from .button import fsub_button, start_button
 
@@ -57,7 +58,7 @@ async def start_command(client: Bot, message: Message):
     )
 
     try:
-        await add_user(id, user_name)
+        await tambah(id)
     except:
         pass
     text = message.text
@@ -174,14 +175,14 @@ async def get_users(client: Bot, message: Message):
     msg = await client.send_message(
         chat_id=message.chat.id, text="<code>Processing ...</code>"
     )
-    users = await full_userbase()
+    users = await semua()
     await msg.edit(f"{len(users)} <b>Pengguna menggunakan bot ini</b>")
 
 
 @Bot.on_message(filters.command("broadcast") & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
     if message.reply_to_message:
-        query = await query_msg()
+        query = await semua()
         broadcast_msg = message.reply_to_message
         total = 0
         successful = 0
@@ -192,8 +193,7 @@ async def send_text(client: Bot, message: Message):
         pls_wait = await message.reply(
             "<code>Broadcasting Message Tunggu Sebentar...</code>"
         )
-        for row in query:
-            chat_id = int(row[0])
+        for chat_id in query:
             if chat_id not in ADMINS:
                 try:
                     await broadcast_msg.copy(chat_id, protect_content=PROTECT_CONTENT)
@@ -203,10 +203,10 @@ async def send_text(client: Bot, message: Message):
                     await broadcast_msg.copy(chat_id, protect_content=PROTECT_CONTENT)
                     successful += 1
                 except UserIsBlocked:
-                    await delete_user(chat_id)
+                    await hapus(chat_id)
                     blocked += 1
                 except InputUserDeactivated:
-                    await delete_user(chat_id)
+                    await hapus(chat_id)
                     deleted += 1
                 except BaseException:
                     unsuccessful += 1
@@ -216,7 +216,7 @@ Jumlah Pengguna: <code>{total}</code>
 Berhasil: <code>{successful}</code>
 Gagal: <code>{unsuccessful}</code>
 Pengguna diblokir: <code>{blocked}</code>
-Akun Terhapus: <code>{deleted}</code></b>"""
+Akun Terhapus: <code>{deleted}</code></b>\n\n🄼🅂 𝗗🆉𝗨𝗟𝚀𝐔𝐑𝐍Λ𝐈𝐍"""
         return await pls_wait.edit(status)
     else:
         msg = await message.reply(
