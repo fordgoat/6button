@@ -11,18 +11,18 @@ from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
-from config import ADMINS, FORCE_SUB_CHANNEL, FORCE_SUB_GROUP
+from config import *
 
 
-async def subschannel(filter, client, update):
-    if not FORCE_SUB_CHANNEL:
+async def sub1(filter, client, update):
+    if not FSUB1:
         return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
         member = await client.get_chat_member(
-            chat_id=FORCE_SUB_CHANNEL, user_id=user_id
+            chat_id=FSUB1, user_id=user_id
         )
     except UserNotParticipant:
         return False
@@ -30,14 +30,135 @@ async def subschannel(filter, client, update):
     return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
 
 
-async def subsgroup(filter, client, update):
-    if not FORCE_SUB_GROUP:
+async def sub2(filter, client, update):
+    if not FSUB2:
         return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
-        member = await client.get_chat_member(chat_id=FORCE_SUB_GROUP, user_id=user_id)
+        member = await client.get_chat_member(chat_id=FSUB2, user_id=user_id)
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub3(filter, client, update):
+    if not FSUB3:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB3, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub4(filter, client, update):
+    if not FSUB4:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(chat_id=FSUB4, user_id=user_id)
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+
+async def sub5(filter, client, update):
+    if not FSUB5:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB5, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub6(filter, client, update):
+    if not FSUB6:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(chat_id=FSUB6, user_id=user_id)
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub7(filter, client, update):
+    if not FSUB7:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB7, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub8(filter, client, update):
+    if not FSUB8:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(chat_id=FSUB8, user_id=user_id)
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub9(filter, client, update):
+    if not FSUB9:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB9, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+
+    return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]
+
+
+async def sub10(filter, client, update):
+    if not FSUB10:
+        return True
+    user_id = update.from_user.id
+    if user_id in ADMINS:
+        return True
+    try:
+        member = await client.get_chat_member(chat_id=FSUB10, user_id=user_id)
     except UserNotParticipant:
         return False
 
@@ -45,20 +166,86 @@ async def subsgroup(filter, client, update):
 
 
 async def is_subscribed(filter, client, update):
-    if not FORCE_SUB_CHANNEL:
+    if not FSUB1:
         return True
-    if not FORCE_SUB_GROUP:
+    if not FSUB2:
+        return True
+    if not FSUB3:
+        return True
+    if not FSUB4:
+        return True
+    if not FSUB5:
+        return True
+    if not FSUB6:
+        return True
+    if not FSUB7:
+        return True
+    if not FSUB8:
+        return True
+    if not FSUB9:
+        return True
+    if not FSUB10:
         return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
-        member = await client.get_chat_member(chat_id=FORCE_SUB_GROUP, user_id=user_id)
+        member = await client.get_chat_member(
+            chat_id=FSUB1, user_id=user_id
+        )
     except UserNotParticipant:
         return False
     try:
         member = await client.get_chat_member(
-            chat_id=FORCE_SUB_CHANNEL, user_id=user_id
+            chat_id=FSUB2, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB3, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB4, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB5, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB6, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB7, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB8, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB9, user_id=user_id
+        )
+    except UserNotParticipant:
+        return False
+    try:
+        member = await client.get_chat_member(
+            chat_id=FSUB10, user_id=user_id
         )
     except UserNotParticipant:
         return False
@@ -123,6 +310,14 @@ async def get_message_id(client, message):
             return msg_id
 
 
-subsgc = filters.create(subsgroup)
-subsch = filters.create(subschannel)
+subs1 = filters.create(sub1)
+subs2 = filters.create(sub2)
+subs3 = filters.create(sub3)
+subs4 = filters.create(sub4)
+subs5 = filters.create(sub5)
+subs6 = filters.create(sub6)
+subs7 = filters.create(sub7)
+subs8 = filters.create(sub8)
+subs9 = filters.create(sub9)
+subs10 = filters.create(sub10)
 subsall = filters.create(is_subscribed)
