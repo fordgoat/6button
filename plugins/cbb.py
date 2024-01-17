@@ -3,54 +3,64 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 from bot import Bot
-from config import OWNER
+from config import *
 from Data import Data
 from pyrogram import filters
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, Message
-
-
-@Bot.on_message(filters.private & filters.incoming & filters.command("about"))
-async def _about(client: Bot, msg: Message):
-    await client.send_message(
-        msg.chat.id,
-        Data.ABOUT.format(client.username, OWNER),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(Data.mbuttons),
-    )
-
-
-@Bot.on_message(filters.private & filters.incoming & filters.command("help"))
-async def _help(client: Bot, msg: Message):
-    await client.send_message(
-        msg.chat.id,
-        "<b>Cara Menggunakan Bot ini</b>\n" + Data.HELP,
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(Data.buttons),
-    )
+from .button import start_button
 
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
-    if data == "about":
-        try:
-            await query.message.edit_text(
-                text=Data.ABOUT.format(client.username, OWNER),
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(Data.mbuttons),
+    if data == "home":
+        out = start_button(client)
+        await query.message.edit_text(
+            text=START_MSG.format(
+                first=query.from_user.first_name,
+                last=query.from_user.last_name,
+                username=f"@{query.from_user.username}"
+                if query.from_user.username
+                else None,
+                mention=query.from_user.mention,
+                id=query.from_user.id,
+            ),
+            reply_markup=InlineKeyboardMarkup(out),
+            disable_web_page_preview=True
             )
-        except MessageNotModified:
-            pass
-    elif data == "help":
-        try:
-            await query.message.edit_text(
-                text="<b>Cara Menggunakan Bot ini</b>\n" + Data.HELP,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(Data.buttons),
+    elif data == "about":
+        await query.message.edit_text(
+            text=f"{zinfo}",
+            disable_web_page_preview=True,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Kembali", callback_data="home")]]
+            ),
+        )
+    elif data == "cmd":
+        await query.message.edit_text(
+            text=CMD_TEXT,
+            disable_web_page_preview=True,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Kembali", callback_data="home")]]
+            ),
+        )
+    elif data == "btn":
+        await query.answer(
+            text=BTN_TEXT.format(BUTTONS),
+            show_alert=True
             )
-        except MessageNotModified:
-            pass
+    elif data == "tutor":
+        await query.message.edit_text(
+            text=TUTOR_TEXT,
+            disable_web_page_preview=True,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("Kembali", callback_data="home")]]
+            ),
+        )
     elif data == "close":
         await query.message.delete()
         try:
