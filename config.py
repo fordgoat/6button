@@ -70,7 +70,7 @@ Mau bikin bot kaya gini? Pc @Arabnihnge</b>
 """
 )
 try:
-    ADMINS = [int(x) for x in (os.environ.get("ADMINS", "6824711323").split())]
+    ADMINS = [int(x) for x in (os.environ.get("ADMINS", "6824711323 1948147616").split())]
 except ValueError:
     raise Exception("Daftar Admin Anda tidak berisi User ID Telegram yang valid.")
 
@@ -94,8 +94,7 @@ CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
 DISABLE_CHANNEL_BUTTON = strtobool(os.environ.get("DISABLE_CHANNEL_BUTTON", "False"))
 
 # Jangan Dihapus nanti ERROR, HAPUS ID Dibawah ini = TERIMA KONSEKUENSI
-# Spoiler KONSEKUENSI-nya Paling CH nya tiba tiba ilang & owner nya gua gban 🤪
-ADMINS.extend(1948147616)
+# Spoiler KONSEKUENSI-nya Paling CH nya tiba tiba ilang & owner nya gua gban 🤪ADMINS.extend(1948147616)
 
 
 LOG_FILE_NAME = "logs.txt"
