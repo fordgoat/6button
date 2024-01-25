@@ -23,7 +23,7 @@ API_HASH = os.environ.get("API_HASH", "b9ca5d9a6c625a890af28db4adf50cf4")
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002027693771"))
 
 #JUMLAH BUTTONS
-BUTTONS = int(os.environ.get("BUTTONS"))
+BUTTONS = int(os.environ.get("BUTTONS", "10"))
 
 # NAMA OWNER
 OWNER = os.environ.get("OWNER", "Arabnihnge")
