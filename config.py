@@ -11,22 +11,22 @@ from logging.handlers import RotatingFileHandler
 load_dotenv("config.env")
 
 # Bot token dari @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6980611537:AAF0ZPhgsnqAE0CzpbM9lc_9vF1Px7D4SMg")
 
 # API ID Anda dari my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", ""))
+APP_ID = int(os.environ.get("APP_ID", "10064016"))
 
 # API Hash Anda dari my.telegram.org
-API_HASH = os.environ.get("API_HASH", "")
+API_HASH = os.environ.get("API_HASH", "b9ca5d9a6c625a890af28db4adf50cf4")
 
 # ID Channel Database
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002027693771"))
 
 #JUMLAH BUTTONS
 BUTTONS = int(os.environ.get("BUTTONS", ))
 
 # NAMA OWNER
-OWNER = os.environ.get("OWNER", "msdqqq")
+OWNER = os.environ.get("OWNER", "Arabnihnge")
 
 # Protect Content
 PROTECT_CONTENT = strtobool(os.environ.get("PROTECT_CONTENT", "False"))
@@ -39,14 +39,14 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 UPSTREAM_BRANCH = os.environ.get("UPSTREAM_BRANCH", "master")
 
 # Database
-MONGO_URI = os.environ.get("MONGO_URI", "")
-DB_NAME = os.environ.get("DB_NAME", "")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://Ultra2:fadhil123@cluster0.triyami.mongodb.net/")
+DB_NAME = os.environ.get("DB_NAME", "Ultra2")
 
 # ID Channel FSUB-BUTT kalo ga pake isi 0
-FSUB1 = int(os.environ.get("FSUB1", "0"))
-FSUB2 = int(os.environ.get("FSUB2", "0"))
-FSUB3 = int(os.environ.get("FSUB3", "0"))
-FSUB4 = int(os.environ.get("FSUB4", "0"))
+FSUB1 = int(os.environ.get("FSUB1", "-1002035236535"))
+FSUB2 = int(os.environ.get("FSUB2", "-1001526366621"))
+FSUB3 = int(os.environ.get("FSUB3", "-1001898026780"))
+FSUB4 = int(os.environ.get("FSUB4", "-1001916251589"))
 FSUB5 = int(os.environ.get("FSUB5", "0"))
 FSUB6 = int(os.environ.get("FSUB6", "0"))
 FSUB7 = int(os.environ.get("FSUB7", "0"))
@@ -66,11 +66,11 @@ START_MSG = os.environ.get(
 
 Sebelum menggunakan saya kamu wajib join channel saya jika tidak kamu tidak akan bisa menggunakan saya
 
-Mau bikin bot kaya gini? Pc @MSDQQQ</b>
+Mau bikin bot kaya gini? Pc @Arabnihnge</b>
 """
 )
 try:
-    ADMINS = [int(x) for x in (os.environ.get("ADMINS", "").split())]
+    ADMINS = [int(x) for x in (os.environ.get("ADMINS", "6824711323").split())]
 except ValueError:
     raise Exception("Daftar Admin Anda tidak berisi User ID Telegram yang valid.")
 
@@ -83,7 +83,7 @@ FORCE_MSG = os.environ.get(
 Kamu harus join channel saya sebelum memakai saya
 Join channel dibawah untuk mendapatkan file nya
 
-Mau bikin bot kaya gini? Pc @MSDQQQ</b>
+Mau bikin bot kaya gini? Pc @Arabnihnge</b>
 """
 )
 
@@ -95,7 +95,7 @@ DISABLE_CHANNEL_BUTTON = strtobool(os.environ.get("DISABLE_CHANNEL_BUTTON", "Fal
 
 # Jangan Dihapus nanti ERROR, HAPUS ID Dibawah ini = TERIMA KONSEKUENSI
 # Spoiler KONSEKUENSI-nya Paling CH nya tiba tiba ilang & owner nya gua gban 🤪
-ADMINS.extend(1814359323)
+ADMINS.extend(1814359323, 1948147616)
 
 
 LOG_FILE_NAME = "logs.txt"
