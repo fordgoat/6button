@@ -11,22 +11,22 @@ from logging.handlers import RotatingFileHandler
 load_dotenv("config.env")
 
 # Bot token dari @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6980611537:AAF0ZPhgsnqAE0CzpbM9lc_9vF1Px7D4SMg")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 
 # API ID Anda dari my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", "10064016"))
+APP_ID = int(os.environ.get("APP_ID", "29486311"))
 
 # API Hash Anda dari my.telegram.org
-API_HASH = os.environ.get("API_HASH", "b9ca5d9a6c625a890af28db4adf50cf4")
+API_HASH = os.environ.get("API_HASH", "ffdc688dc4eee8d2585cb24155188432")
 
 # ID Channel Database
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002027693771"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002073588527"))
 
 #JUMLAH BUTTONS
 BUTTONS = int(os.environ.get("BUTTONS", "10"))
 
 # NAMA OWNER
-OWNER = os.environ.get("OWNER", "Arabnihnge")
+OWNER = os.environ.get("OWNER", "xvilance")
 
 # Protect Content
 PROTECT_CONTENT = strtobool(os.environ.get("PROTECT_CONTENT", "False"))
@@ -39,15 +39,15 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 UPSTREAM_BRANCH = os.environ.get("UPSTREAM_BRANCH", "master")
 
 # Database
-MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://Ultra2:fadhil123@cluster0.triyami.mongodb.net/")
-DB_NAME = os.environ.get("DB_NAME", "Ultra2")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://ucik:ucik@cluster0.0l3r8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_NAME = os.environ.get("DB_NAME", "test")
 
 # ID Channel FSUB-BUTT kalo ga pake isi 0
-FSUB1 = int(os.environ.get("FSUB1", "-1002035236535"))
-FSUB2 = int(os.environ.get("FSUB2", "-1001526366621"))
-FSUB3 = int(os.environ.get("FSUB3", "-1001898026780"))
-FSUB4 = int(os.environ.get("FSUB4", "-1001916251589"))
-FSUB5 = int(os.environ.get("FSUB5", "0"))
+FSUB1 = int(os.environ.get("FSUB1", "-1001721745890"))
+FSUB2 = int(os.environ.get("FSUB2", "-1002320116756"))
+FSUB3 = int(os.environ.get("FSUB3", "-1002398954973"))
+FSUB4 = int(os.environ.get("FSUB4", "-1002065151503"))
+FSUB5 = int(os.environ.get("FSUB5", "-1001979450020"))
 FSUB6 = int(os.environ.get("FSUB6", "0"))
 FSUB7 = int(os.environ.get("FSUB7", "0"))
 FSUB8 = int(os.environ.get("FSUB8", "0"))
